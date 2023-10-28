@@ -42,4 +42,4 @@ const NeighborhoodSchema = mongoose.Schema({
 const NeighborhoodModel = mongoose.model('NeighborhoodModel', NeighborhoodSchema, 'neighborhoods');
 
 
-export default NeighborhoodModel;
+module.exports = NeighborhoodModel;
