@@ -6,7 +6,7 @@ const neighborhoodLogic = require('../logics/neighborhood-logic');
 
 router.get("/", async (req, res, next) => {
     try {
-        const neighborhoods = await neighborhoodLogic.getAllRestaurantsAsync();
+        const neighborhoods = await neighborhoodLogic.getAllNeighborhoodsAsync();
         res.json(neighborhoods);
     } catch (error) {
         next(error);
