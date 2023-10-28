@@ -5,7 +5,7 @@
  SPDX-License-Identifier: Apache-2.0
 -->
 <html>
-  <head>
+  <!-- <head>
     <title>Simple Polygon</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script>
@@ -65,12 +65,50 @@
         padding: 0;
       }
     </style>
-  </head>
+  </head> -->
   <body>
     <div id="map"></div>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=INSERT_YOUR_API_KEY&callback=initMap&v=weekly"
-      defer
-    ></script>
+
+    <div style="text-decoration:none; overflow:hidden;max-width:100%;width:500px;height:500px;">
+        <div id="google-maps-display" style="height:100%; width:100%;max-width:100%;">
+            <iframe
+                style="height:100%;width:100%;border:0;" frameborder="0"
+                src="https://www.google.com/maps/embed/v1/place?q=Israel&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8">
+            </iframe>
+        </div>
+        <a class="my-codefor-googlemap" rel="nofollow" href="https://www.bootstrapskins.com/themes"
+            id="get-map-data">premium bootstrap themes
+        </a>
+        <style>
+            #google-maps-display img {
+                max-width: none !important;
+                background: none !important;
+                font-size: inherit;
+                font-weight: inherit;
+            }
+        </style>
+    </div>
+
+    <iframe
+        width="450"
+        height="250"
+        frameborder="0" style="border:0"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/place?q=Israel&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+        allowfullscreen>
+    </iframe>
+    
+    <div class="col-sm-12 col-md-7">
+        <div class="panel panel-success">
+        <div class="panel-heading"><h3 class="panel-title">Google Maps Preview</h3></div>
+        <div class="panel-body"><h4>Your Google Map will look like this:</h4>
+        <div class="col-sm-12" id="map-loader" style="display: none;">
+        </div>
+        <div class="map-holder col-sm-12 col-md-12" style="" id="map-container">
+        <iframe  id="preview" style="border: 0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Israel&amp;key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+        </div>
+        </div>
+        </div>
+        </div>
   </body>
 </html>
