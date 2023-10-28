@@ -1,5 +1,6 @@
-conn = new Mongo();
-db = conn.getDB("geospatialTutorialDb");
+conn = new Mongo()
+db = conn.getDB("geospatialTutorialDb")
 
 
-db.restaurants.find({});
+db.restaurants.createIndex({ location: "2dsphere" })
+db.neighborhoods.createIndex({ geometry: "2dsphere" })
