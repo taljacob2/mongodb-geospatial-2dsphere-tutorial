@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const StatusCode = require('status-code-enum').StatusCode
+const StatusCode = require('status-code-enum').StatusCode;
+const restaurantLogic = require('../logics/restaurant-logic');
 
 
 router.get("/", async (req, res, next) => {
     try {
-        res.send("all restaurants");
+        const restaurants = await restaurantLogic.getAllRestaurantsAsync();
+        res.json(restaurants);
     } catch (error) {
         next(error);
     }
