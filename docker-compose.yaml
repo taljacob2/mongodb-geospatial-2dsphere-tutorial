@@ -4,19 +4,29 @@ services:
 
   mongodb:
     image: mongo
-    env_file: ./.env
     ports:
       - $DB_LOCAL_PORT:$DB_DOCKER_PORT
     volumes:
       - db-data:/data/db
+      - ./initdb/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     environment:
       - MONGO_INITDB_ROOT_USERNAME=$DB_USER
       - MONGO_INITDB_ROOT_PASSWORD=$DB_PASSWORD
 
+  mongo_import:
+    image: mongo
+    links:
+      - mongodb
+    volumes:
+      - ./initdb:/initdb
+    command:
+      - initdb/import.sh
+    environment:
+      - MONGO_URI=$DB_DOCKER_URI
+
   mongoexpress:
     image: mongo-express
     restart: always
-    env_file: ./.env
     ports:
       - $DB_UI_LOCAL_PORT:$DB_UI_DOCKER_PORT
     environment:
