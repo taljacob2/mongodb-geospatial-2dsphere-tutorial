@@ -20,6 +20,22 @@ See [Google Maps GitHub JS Samples Official Repository](https://github.com/googl
 
 See [Another Google Maps JS API GitHub Official Repository](https://github.com/googlemaps/js-api-loader)
 
+https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+
+https://developers.google.com/maps/documentation/javascript/geolocation
+
+https://developers.google.com/maps/documentation/javascript/importing_data
+
+https://developers.google.com/maps/documentation/javascript/earthquakes
+
+https://developers.google.com/maps/documentation/javascript/combining-data
+
+https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+
+https://developers.google.com/maps/documentation/javascript/reference/top-level
+
+https://developers.google.com/maps/documentation/javascript/reference/map
+
 #### Google Maps Api Key (that require billing)
 
 Use the following public google map api keys:
