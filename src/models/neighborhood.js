@@ -22,14 +22,8 @@ const NeighborhoodSchema = mongoose.Schema({
             required: true
         },
         coordinates: {
-            type: [Number],
-            required: true,
-            validate: {
-                validator: (value) => {
-                    return value.length >= 1
-                },
-                message: 'Coordinates must have at least 1 element.'
-            }
+            type: [[[Number]]],
+            required: true
         }
     }
 }, {
