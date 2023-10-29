@@ -20,11 +20,18 @@ See [Google Maps GitHub JS Samples Official Repository](https://github.com/googl
 
 See [Another Google Maps JS API GitHub Official Repository](https://github.com/googlemaps/js-api-loader)
 
-#### Google Maps Api Key
+#### Google Maps Api Key (that require billing)
 
-Use the following public google map api key:
+Use the following public google map api keys:
+
+For `embed` iframe tags api:
 ```
 AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8
+```
+
+For JavaScript api:
+```
+AIzaSyCmaPALqVmYnLBgUFBbFRe-Hn-LE5gQPUE
 ```
 
 ## Documentation
