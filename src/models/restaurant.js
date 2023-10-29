@@ -26,9 +26,9 @@ const RestaurantSchema = mongoose.Schema({
             required: true,
             validate: {
                 validator: (value) => {
-                    return value.length === 2
+                    return value.length >= 2
                 },
-                message: 'Coordinates must have exactly 2 elements.'
+                message: 'Coordinates must have at least 2 elements.'
             }
         }
     }
