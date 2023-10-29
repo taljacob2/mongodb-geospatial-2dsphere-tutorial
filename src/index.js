@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 const dotenv = require('dotenv');
 const dotenvExpand = require('dotenv-expand');
 const restaurantController = require('./controllers/restaurant-controller');
@@ -13,8 +14,9 @@ dotenvExpand.expand(dotenv.config());
 
 const app = express();
 const PORT = process.env.NODE_PORT;
-
+app.use(cors());
 app.use(express.json());
+
 app.use('/api/restaurant', restaurantController);
 app.use('/api/neighborhood', neighborhoodController);
 createPublicRoute(app);
