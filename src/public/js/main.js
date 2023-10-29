@@ -23,14 +23,33 @@
     }
 
     /**
-     * Loop through the results array and place a marker for each set of
+     * Loop through the restaurants array and place a marker for each set of
      * coordinates.
      * 
-     * @param {*} documents documents to present in map.
+     * @param {*} restaurants Restaurants to present in map.
      */
-    const setMarkersInMap = (documents) => {
-        for (let i = 0; i < documents.length; i++) {
-            const coords = documents[i].location.coordinates;
+    const setRestaurantsMarkersInMap = (restaurants) => {
+        for (let i = 0; i < restaurants.length; i++) {
+            const coords = restaurants[i].location.coordinates;
+            const latLng = new google.maps.LatLng(coords[1], coords[0]);
+
+            new google.maps.Marker({
+                position: latLng,
+                map: map,
+            });
+        }
+    };
+
+    /**
+     * Loop through the neighborhoods array and place a marker for each set of
+     * coordinates.
+     * 
+     * @param {*} neighborhoods Neighborhoods to present in map.
+     */
+    const setNeighborhoodsMarkersInMap = (neighborhoods) => {
+        for (let i = 0; i < neighborhoods.length; i++) {
+            console.log(JSON.stringify(neighborhoods[i], null, 2));
+            const coords = neighborhoods[i].geometry.coordinates[0][0];
             const latLng = new google.maps.LatLng(coords[1], coords[0]);
 
             new google.maps.Marker({
@@ -45,9 +64,15 @@
             $.get(`${HOST}/api/restaurant`)
                 .done((data, textStatus, jqXHR) => {
                     initMap();
-                    setMarkersInMap(data);
+                    setRestaurantsMarkersInMap(data);
                 })
-        }
+        } else if ($('.import-json-neighborhoods-page').length) {
+            $.get(`${HOST}/api/neighborhood`)
+                .done((data, textStatus, jqXHR) => {
+                    initMap();
+                    setNeighborhoodsMarkersInMap(data);
+                })
+        } 
     }
     pageLoader();
 
