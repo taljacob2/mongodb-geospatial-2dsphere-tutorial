@@ -22,7 +22,7 @@ const RestaurantSchema = mongoose.Schema({
             required: true
         },
         coordinates: {
-            type: [Number],
+            type: Array,
             required: true,
             validate: {
                 validator: (value) => {
