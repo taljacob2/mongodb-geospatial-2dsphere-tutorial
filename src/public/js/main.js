@@ -51,6 +51,39 @@
     };
 
     /**
+     * Places a polygon marker on a Google Map.
+     * 
+     * @param {*} geoJson geoJson that its 'type' is 'Polygon'.
+     * @returns {google.maps.LatLng}
+     */
+    const setPolygonMarkersInMap = (geoJson) => {
+        if (geoJson.type != 'Polygon') { return null; }
+        
+        let outerCoords = []
+        const outerCoordsRaw = geoJson.coordinates[0];
+        for (let i = 0; i < outerCoordsRaw.length; i++) {
+            const latLng = new google.maps.LatLng(outerCoordsRaw[i][1], outerCoordsRaw[i][0]);
+            outerCoords[i] = latLng;
+        }
+
+        const polygon = new google.maps.Polygon({
+            paths: outerCoords,
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+        });
+
+        polygon.setMap(map);
+
+        // TODO: debug
+        console.log(outerCoords);
+
+        return outerCoords[0];
+    }
+
+    /**
      * Loop through the neighborhoods array and place a marker for each set of
      * coordinates, where each document is a `Polygon` with holes.
      * 
@@ -61,30 +94,37 @@
         let returnedLatLng;
 
         for (let i = 0; i < neighborhoods.length; i++) {
-            const outerCoordsRaw = neighborhoods[i].geometry.coordinates[0];
+            const neighborhoodGeoJson = neighborhoods[i].geometry;
             let outerCoords = []
-            for(let j = 0; j < outerCoordsRaw.length; j++) {
-                const latLng = new google.maps.LatLng(outerCoordsRaw[j][1], outerCoordsRaw[j][0]);
-                outerCoords[j] = latLng;
-            }
-            const innerCoordsRaw = neighborhoods[i].geometry.coordinates[0];
             let innerCoords = []
-            for(let j = 0; j < innerCoordsRaw.length; j++) {
-                const latLng = new google.maps.LatLng(innerCoordsRaw[j][1], innerCoordsRaw[j][0]);
-                innerCoords[j] = latLng;
-            }
-            const polygon = new google.maps.Polygon({
-                paths: [outerCoords, innerCoords],
-                strokeColor: "#FF0000",
-                strokeOpacity: 0.8,
-                strokeWeight: 2,
-                fillColor: "#FF0000",
-                fillOpacity: 0.35,
-            });
 
-            returnedLatLng = outerCoords;
+            returnedLatLng = setPolygonMarkersInMap(neighborhoodGeoJson) || returnedLatLng;
+            // const outerCoordsRaw = neighborhoods[i].geometry.coordinates[0];
+            // for (let i = 0; i < outerCoordsRaw.length; i++) {
+            //     const latLng = new google.maps.LatLng(outerCoordsRaw[i][1], outerCoordsRaw[i][0]);
+            //     outerCoords[i] = latLng;
+            // }
+            
+            // // if (neighborhoods[i].geometry.coordinates.length >= 2) {
+            // //     const innerCoordsRaw = neighborhoods[i].geometry.coordinates[1];
+            // //     for (let i = 0; i < innerCoordsRaw.length; i++) {
+            // //         const latLng = new google.maps.LatLng(innerCoordsRaw[i][1], innerCoordsRaw[i][0]);
+            // //         innerCoords[i] = latLng;
+            // //     }
+            // // }
+
+            // const polygon = new google.maps.Polygon({
+            //     paths: [outerCoords, innerCoords],
+            //     strokeColor: "#FF0000",
+            //     strokeOpacity: 0.8,
+            //     strokeWeight: 2,
+            //     fillColor: "#FF0000",
+            //     fillOpacity: 0.35,
+            // });
+
+            // returnedLatLng = outerCoords;
     
-            polygon.setMap(map);
+            // polygon.setMap(map);
         }
 
         return returnedLatLng;
