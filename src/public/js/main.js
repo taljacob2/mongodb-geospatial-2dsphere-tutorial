@@ -117,7 +117,7 @@
         const innerCoordsRaw = geoJson.coordinates[1][0];
         for (let i = 0; i < innerCoordsRaw.length; i++) {
             const latLng = new google.maps.LatLng(innerCoordsRaw[i][1], innerCoordsRaw[i][0]);
-            outerCoords[i] = latLng;
+            innerCoords[i] = latLng;
         }
 
         const polygon = new google.maps.Polygon({
