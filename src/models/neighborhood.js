@@ -18,7 +18,7 @@ const NeighborhoodSchema = mongoose.Schema({
     geometry: {
         type: {
             type: String,
-            enum: ['Polygon'], // 'type' must be 'Polygon'
+            enum: ['Polygon', 'MultiPolygon'], // 'type' must be 'Polygon' or 'MultiPolygon'
             required: true
         },
         coordinates: {
