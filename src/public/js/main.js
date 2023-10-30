@@ -26,10 +26,28 @@
     }
 
     /**
-     * Set all the restaurants as Google Map markers.
+     * Places a point marker on a Google Map, where each geoJson type is a
+     * `Point`.
      * 
-     * Loops through the restaurants array and place a marker for each set of
-     * coordinates, where each document is a `Point`.
+     * @param {*} geoJson geoJson that its 'type' is 'Point'.
+     * @returns {google.maps.LatLng}
+     */
+    const setPointMarkersInMap = (geoJson) => {
+        if (geoJson.type != 'Point') { return null; }
+
+        const coords = geoJson.coordinates;
+        const latLng = new google.maps.LatLng(coords[1], coords[0]);
+
+        new google.maps.Marker({
+            position: latLng,
+            map: map,
+        });
+
+        return latLng;
+    }
+
+    /**
+     * Set all the restaurants as Google Map markers.
      * 
      * @param {*} restaurants Restaurants to present in map.
      * @see https://developers.google.com/maps/documentation/javascript/importing_data
@@ -38,15 +56,7 @@
         let returnedLatLng;
 
         for (let i = 0; i < restaurants.length; i++) {
-            const coords = restaurants[i].location.coordinates;
-            const latLng = new google.maps.LatLng(coords[1], coords[0]);
-
-            new google.maps.Marker({
-                position: latLng,
-                map: map,
-            });
-
-            returnedLatLng = latLng;
+            returnedLatLng = setPointMarkersInMap(restaurants[i].location);
         }
 
         return returnedLatLng;
@@ -124,6 +134,7 @@
 
     /**
      * Set all the neighborhoods as Google Map markers.
+     * 
      * @param {*} neighborhoods Neighborhoods to present in map.
      */
     const setNeighborhoodsMarkersInMap = (neighborhoods) => {
