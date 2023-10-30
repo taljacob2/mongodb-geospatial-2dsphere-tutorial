@@ -68,6 +68,20 @@
 
         for (let i = 0; i < neighborhoods.length; i++) {
             setGeoJsonInMap(neighborhoods[i].geometry);
+
+            map.data.setStyle((feature) => {
+                return {
+                    strokeColor: "#FF0000",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: "#FF0000",
+                    fillOpacity: 0.25,
+                    visible: true,
+                    clickable: true,
+                    title: neighborhoods[i].name,
+                }
+            })
+
             if (i == 0) {
                 latLngToReturn = new google.maps.LatLng(
                     neighborhoods[i].geometry.coordinates[0][0][1],
@@ -75,10 +89,6 @@
                 );
             }
         }
-
-        map.data.setStyle({
-            strokeColor: "blue",
-        })
 
         return latLngToReturn;
     };
