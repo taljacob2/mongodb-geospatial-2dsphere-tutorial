@@ -50,6 +50,7 @@
      * Set all the restaurants as Google Map markers.
      * 
      * @param {*} restaurants Restaurants to present in map.
+     * @returns {google.maps.LatLng}
      * @see https://developers.google.com/maps/documentation/javascript/importing_data
      */
     const setRestaurantsMarkersInMap = (restaurants) => {
@@ -136,6 +137,7 @@
      * Set all the neighborhoods as Google Map markers.
      * 
      * @param {*} neighborhoods Neighborhoods to present in map.
+     * @returns {google.maps.LatLng}
      */
     const setNeighborhoodsMarkersInMap = (neighborhoods) => {
         let returnedLatLng;
