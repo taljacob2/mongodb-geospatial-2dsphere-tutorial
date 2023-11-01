@@ -36,6 +36,9 @@ https://developers.google.com/maps/documentation/javascript/reference/top-level
 
 https://developers.google.com/maps/documentation/javascript/reference/map
 
+Best GeoJson Example of use:
+https://github.com/sk1me/Add-GeoJSON-Button/tree/master
+
 #### Google Maps Api Key (that require billing)
 
 Use the following public google map api keys:
