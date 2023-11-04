@@ -106,6 +106,8 @@
                     initMap();
                     map.center = setNeighborhoodsMarkersInMap(data);
                 })
+        } else if ($('.waze-single-destination-page').length) {
+
         }
     }
     pageLoader();
