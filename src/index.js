@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const dotenvExpand = require('dotenv-expand');
 const restaurantController = require('./controllers/restaurant-controller');
 const neighborhoodController = require('./controllers/neighborhood-controller');
+const googleMapsController = require('./controllers/google-maps-controller');
 const errorHandler = require('./middlewares/error-handler');
 const createPublicRoute = require('./helpers/public/create-public-route');
 const connectAsync = require('./data-access/dal');
@@ -19,6 +20,7 @@ app.use(express.json());
 
 app.use('/api/restaurant', restaurantController);
 app.use('/api/neighborhood', neighborhoodController);
+app.use('/api/maps', googleMapsController);
 createPublicRoute(app);
 app.use(errorHandler);
 
