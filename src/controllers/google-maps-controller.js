@@ -4,9 +4,10 @@ const StatusCode = require('status-code-enum').StatusCode
 const googleMapsLogic = require('../logics/google-maps-logic');
 
 
-router.get("/search", async (req, res, next) => {
+router.get("/search/:name", async (req, res, next) => {
     try {
-        const result = await googleMapsLogic.geocodingQuery('1 place du Capitole', 'Toulouse');
+        const { name } = req.params;
+        const result = await googleMapsLogic.geocodingQuery(name);
         res.json(result);
     } catch (error) {
         next(error);
