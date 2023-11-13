@@ -25,6 +25,6 @@ createPublicRoute(app);
 app.use(errorHandler);
 
 app.listen(PORT, async () => {
-    await connectAsync();
+    // await connectAsync();
     console.log(`App listening on port ${PORT}...`);
 })
